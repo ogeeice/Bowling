@@ -1,0 +1,289 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Scenes/lane.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/free.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Script/Game_Scene.gd" type="Script" id=3]
+[ext_resource path="res://SMARC___.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/fade.tscn" type="PackedScene" id=5]
+[ext_resource path="res://PNG/BOWLSaS.png" type="Texture" id=6]
+[ext_resource path="res://Assets/LINE.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://PNG/godo.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/BOWLING_PIN.tscn" type="PackedScene" id=9]
+[ext_resource path="res://PNG/Target.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/pin_formation/style4.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/pin_formation/style2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/pin_formation/style3.tscn" type="PackedScene" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 2.178, 2, 2.101 )
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=5]
+points = PoolVector3Array( -1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1 )
+
+[sub_resource type="PlaneMesh" id=6]
+size = Vector2( 0.5, 0.5 )
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+albedo_color = Color( 0.0392157, 0.803922, 0.929412, 1 )
+albedo_texture = ExtResource( 10 )
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Target:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 30, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Target"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Target:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 30, 0 ), Vector3( 0, -30, 0 ) ]
+}
+
+[node name="Game_Scene" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="fade" parent="." instance=ExtResource( 5 )]
+
+[node name="Post_processing" type="Spatial" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Post_processing"]
+transform = Transform( 0.421106, -0.320696, 0.848424, 0.142578, 0.947182, 0.287259, -0.895735, 2.66325e-07, 0.444588, 23.8107, 3.03393, 0.0555267 )
+light_energy = 0.5
+shadow_enabled = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Holder" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dead" type="Control" parent="CanvasLayer/Holder"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ui" type="VBoxContainer" parent="CanvasLayer/Holder/Dead"]
+anchor_left = 0.743094
+anchor_right = 0.999094
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Ball" type="Button" parent="CanvasLayer/Holder/Dead/Ui"]
+margin_top = 230.0
+margin_right = 262.0
+margin_bottom = 274.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "NEW BALL"
+flat = true
+
+[node name="Level" type="Button" parent="CanvasLayer/Holder/Dead/Ui"]
+margin_top = 278.0
+margin_right = 262.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "LEVEL SELECT"
+flat = true
+
+[node name="Exit" type="Button" parent="CanvasLayer/Holder/Dead/Ui"]
+margin_top = 326.0
+margin_right = 262.0
+margin_bottom = 370.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "EXIT"
+flat = true
+
+[node name="Lane" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4993, 0, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Lanepos" type="Position3D" parent="Lane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0789146, 1.23912, 17.9246 )
+
+[node name="detect" type="Area" parent="Lane"]
+transform = Transform( 2.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 1.0732, -38.3293 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Lane/detect"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0540113, -0.0343926, 1.72205 )
+shape = SubResource( 2 )
+
+[node name="slow" type="Area" parent="Lane"]
+transform = Transform( 2.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0.258951, -32.3792 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Lane/slow"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0540113, -0.0343926, 1.72205 )
+shape = SubResource( 2 )
+
+[node name="Pin_amount" type="Area" parent="Lane"]
+transform = Transform( 2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 1.0732, -38.3293 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Lane/Pin_amount"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0540113, -0.0343926, 1.72205 )
+shape = SubResource( 2 )
+
+[node name="pin_spawner" type="Position3D" parent="Lane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212299, 0.578, -37.26 )
+
+[node name="destroyer" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.378, -2.69164, -46.2683 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="destroyer"]
+transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 12, 0.971283, 0.080801, -0.911755 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="destroyer"]
+transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 12, 0.971283, 0.080801, -0.911755 )
+shape = SubResource( 5 )
+
+[node name="Arena" type="Spatial" parent="."]
+
+[node name="lane" parent="Arena" instance=ExtResource( 1 )]
+transform = Transform( -2.44381e-07, 0, -1.5, 0, 1.5, 0, 1.5, 0, -2.44381e-07, 14.301, -0.163, -9.463 )
+
+[node name="free" type="MeshInstance" parent="Arena"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6114, 9.13681, -42.2493 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+material/13 = null
+
+[node name="LINE" type="MeshInstance" parent="Arena"]
+transform = Transform( -4.88762e-07, 0, -3, 0, 3, 0, 3, 0, -4.88762e-07, -13.3403, 15.0168, -9.29124 )
+mesh = ExtResource( 7 )
+material/0 = null
+
+[node name="LINE2" type="MeshInstance" parent="Arena"]
+transform = Transform( -4.88762e-07, 0, -3, 0, 3, 0, 3, 0, -4.88762e-07, 44.0165, 15.0168, -9.29124 )
+mesh = ExtResource( 7 )
+material/0 = null
+
+[node name="LINE3" type="MeshInstance" parent="Arena"]
+transform = Transform( -4.88762e-07, 0, -3, 0, 3, 0, 3, 0, -4.88762e-07, 44.0165, 12.7485, -9.29124 )
+mesh = ExtResource( 7 )
+material/0 = null
+
+[node name="Props" type="Spatial" parent="Arena"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Arena/Props"]
+transform = Transform( -3.25841e-07, 0, 1, 0, 2, 0, -2, 0, -1.62921e-07, -14.8068, 9.04321, -17.858 )
+texture = ExtResource( 8 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="Arena/Props"]
+transform = Transform( -1.62921e-06, 0, 1, 0, 5, 0, -10, 0, -1.62921e-07, 42.86, 6.975, -11.585 )
+flip_h = true
+texture = ExtResource( 6 )
+
+[node name="style2" parent="Arena/Props" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.551, 0.578, -37.26 )
+
+[node name="style3" parent="Arena/Props" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.38082, 0.578, -37.26 )
+
+[node name="style6" parent="Arena/Props" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318315, 0.578, -37.26 )
+
+[node name="style4" parent="Arena/Props" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5974, 0.578, -37.26 )
+
+[node name="style5" parent="Arena/Props" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.97997, 0.578, -37.26 )
+
+[node name="Spawn_Point" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.287, 0.578, -37.26 )
+
+[node name="BOWLING_PIN" parent="Spawn_Point" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.67574, 0.00171465, -0.117863 )
+
+[node name="Target" type="Position3D" parent="."]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 19.4204, -0.160915, 18.551 )
+
+[node name="Aim2" type="MeshInstance" parent="Target"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.269964 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.967537, 0.252728, 0, -0.252728, 0.967537, 19.3576, 3.00437, -31.4322 )
+
+[node name="Kameraa" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.983575, 0.180502, 0, -0.180502, 0.983575, 19.4204, 2.0327, 20.7874 )
+current = true
+
+[node name="music" type="Spatial" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="music"]
+
+[node name="TargetAnim" type="AnimationPlayer" parent="."]
+autoplay = "Target"
+anims/RESET = SubResource( 8 )
+anims/Target = SubResource( 9 )
+
+[connection signal="pressed" from="CanvasLayer/Holder/Dead/Ui/Ball" to="." method="_on_Ball_pressed"]
+[connection signal="pressed" from="CanvasLayer/Holder/Dead/Ui/Level" to="." method="_on_Level_pressed"]
+[connection signal="pressed" from="CanvasLayer/Holder/Dead/Ui/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="body_entered" from="Lane/detect" to="." method="_on_detect_body_entered"]
+[connection signal="body_entered" from="Lane/slow" to="." method="_on_slow_body_entered"]
+[connection signal="body_exited" from="Lane/slow" to="." method="_on_slow_body_exited"]
+[connection signal="body_entered" from="Lane/Pin_amount" to="." method="_on_Pin_amount_body_entered"]
+[connection signal="body_entered" from="destroyer" to="." method="_on_destroyer_body_entered"]

@@ -1,0 +1,353 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Script/Title_Screen.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Models/ball.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/bs.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Environment/New_environment.tres" type="Environment" id=4]
+[ext_resource path="res://Assets/music/menu.wav" type="AudioStream" id=5]
+[ext_resource path="res://SMARC___.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://Scenes/fade.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 120
+outline_size = 1
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="SpatialMaterial" id=4]
+metallic = 0.55
+roughness = 0.44
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.913725, 0, 0, 1 )
+metallic = 0.67
+roughness = 0.22
+
+[sub_resource type="SpatialMaterial" id=6]
+params_diffuse_mode = 4
+params_specular_mode = 3
+albedo_color = Color( 0.219608, 0.109804, 0.164706, 1 )
+metallic = 0.72
+roughness = 0.13
+
+[sub_resource type="Animation" id=7]
+resource_name = "Menu"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 43, 116 ), Vector2( 43, 95 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/Label2:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 35, 561 ), Vector2( 19, 561 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/Label:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 43, 116 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/Label2:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 19, 561 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/Label:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[node name="Title_Screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fade" parent="." instance=ExtResource( 7 )]
+
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 830.0
+margin_top = 319.0
+margin_right = -62.0
+margin_bottom = -87.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PLAY" type="Button" parent="Control/Control2"]
+margin_left = 1.36993
+margin_top = 23.109
+margin_right = 130.37
+margin_bottom = 64.109
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "PLAY"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HOW TO PLAY" type="Button" parent="Control/Control2"]
+margin_left = 0.674988
+margin_top = 88.158
+margin_right = 129.675
+margin_bottom = 129.158
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "CONTROL"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXIT" type="Button" parent="Control/Control2"]
+margin_left = 2.0
+margin_top = 151.582
+margin_right = 131.0
+margin_bottom = 192.582
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "EXIT"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = 19.0
+margin_top = 561.0
+margin_right = 391.0
+margin_bottom = 608.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Created BY ISAIAH ESSIEN"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+anchor_right = 1.0
+margin_left = 43.0
+margin_top = 116.0
+margin_right = 3734.0
+margin_bottom = 255.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "free bowling"
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Howtopop" type="PopupMenu" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -110.0
+margin_right = -1114.0
+margin_bottom = -580.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Howtopop"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 29.0
+margin_top = -56.0
+margin_right = 1211.0
+margin_bottom = 671.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hback" type="Button" parent="Howtopop/ColorRect"]
+margin_left = 914.305
+margin_top = 527.208
+margin_right = 1043.3
+margin_bottom = 568.208
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "BACK"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Howtopop/ColorRect"]
+margin_left = 82.0
+margin_top = 57.0
+margin_right = 1105.0
+margin_bottom = 189.0
+custom_colors/font_color = Color( 0.992157, 0.992157, 0.992157, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "controls"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Howtopop/ColorRect"]
+margin_left = 236.0
+margin_top = 240.0
+margin_right = 846.0
+margin_bottom = 524.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "COMMAND
+
+EXIT
+FULLSCREEN
+MOVE BALL LEFT
+MOVE BALL RIGHT
+RELEASE BALL"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Howtopop/ColorRect"]
+margin_left = 108.0
+margin_top = 240.0
+margin_right = 210.0
+margin_bottom = 524.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "KEYS
+
+ESC
+F
+A
+D
+SPACE"
+uppercase = true
+
+[node name="Post" type="Spatial" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Post"]
+transform = Transform( 0.762516, 0.0674339, -0.643445, 0.0936191, 0.972585, 0.212872, 0.64016, -0.222557, 0.735298, 0, 0, 0 )
+shadow_enabled = true
+
+[node name="props" type="Spatial" parent="."]
+
+[node name="bs" type="MeshInstance" parent="props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27956, 0.436912, -1.04424 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 4 )
+material/1 = SubResource( 5 )
+
+[node name="bs2" type="MeshInstance" parent="props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.283622, 0.436912, -1.6362 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 4 )
+material/1 = SubResource( 5 )
+
+[node name="rot" type="Spatial" parent="."]
+
+[node name="ball" type="MeshInstance" parent="rot"]
+transform = Transform( 1.76474, 0.161324, -0.927187, -0.609795, 1.69683, -0.865398, 0.716836, 1.0463, 1.54641, 0, 0, 0 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 6 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46066, 0.69138, 3.51066 )
+keep_aspect = 0
+current = true
+near = 0.01
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 4 )
+
+[node name="muss" type="Spatial" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Menu"
+anims/Menu = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
+[connection signal="pressed" from="Control/Control2/PLAY" to="." method="_on_PLAY_pressed"]
+[connection signal="pressed" from="Control/Control2/HOW TO PLAY" to="." method="_on_HOW_TO_PLAY_pressed"]
+[connection signal="pressed" from="Control/Control2/EXIT" to="." method="_on_EXIT_pressed"]
+[connection signal="pressed" from="Howtopop/ColorRect/Hback" to="." method="_on_Hback_pressed"]

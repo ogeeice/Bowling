@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Script/Title.gd" type="Script" id=1]
+[ext_resource path="res://PNG/GLIITCH1.png" type="Texture" id=3]
+[ext_resource path="res://PNG/GLIITCH3.png" type="Texture" id=4]
+[ext_resource path="res://PNG/GLIITCH2.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Logo",
+"speed": 5.0
+} ]
+
+[node name="Title" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
+position = Vector2( 512, 300 )
+frames = SubResource( 1 )
+animation = "Logo"
+
+[connection signal="animation_finished" from="Control/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/BOWLING_PIN.tscn" type="PackedScene" id=1]
+
+[node name="style1" type="Spatial"]
+
+[node name="BOWLING_PIN5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47203, 0.00142264, -0.0026741 )
+
+[node name="BOWLING_PIN7" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39458, 0.00142264, -0.0026741 )
+
+[node name="BOWLING_PIN8" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6238, 0.00142264, 0.749359 )
+
+[node name="BOWLING_PIN9" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.640629, 0.00142264, 0.749359 )
+
+[node name="BOWLING_PIN10" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0257301, 0.00142264, 1.49561 )

@@ -1,0 +1,179 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Script/Level_Select.gd" type="Script" id=1]
+[ext_resource path="res://Assets/music/menu.wav" type="AudioStream" id=5]
+[ext_resource path="res://SMARC___.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://Scenes/fade.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 120
+outline_size = 1
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Gametype"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -806, -111 ), Vector2( -773, -111 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -806, -111 ) ]
+}
+
+[node name="Level_Select" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fade" parent="." instance=ExtResource( 7 )]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 830.0
+margin_top = 209.0
+margin_right = -62.0
+margin_bottom = -87.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -22.0
+margin_top = -0.0518029
+margin_right = 11.0
+margin_bottom = -0.0517883
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="STYLE1" type="Button" parent="Control/Control2/VBoxContainer"]
+margin_right = 165.0
+margin_bottom = 53.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "5 PIN"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="STYLE2" type="Button" parent="Control/Control2/VBoxContainer"]
+margin_top = 57.0
+margin_right = 165.0
+margin_bottom = 110.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "9 PIN"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="STYLE3" type="Button" parent="Control/Control2/VBoxContainer"]
+margin_top = 114.0
+margin_right = 165.0
+margin_bottom = 167.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "10 PIN"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="STYLE4" type="Button" parent="Control/Control2/VBoxContainer"]
+margin_top = 171.0
+margin_right = 165.0
+margin_bottom = 224.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "7 10 SPLIT"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BACK" type="Button" parent="Control/Control2"]
+margin_left = -3.0
+margin_top = 259.582
+margin_right = 136.0
+margin_bottom = 312.582
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "BACK"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Control2"]
+margin_left = -806.0
+margin_top = -111.0
+margin_right = -256.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 2 )
+text = "MATCH TYPE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.461, 0.691, 3.511 )
+keep_aspect = 0
+current = true
+near = 0.01
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Control/Control2/Label")
+autoplay = "Gametype"
+anims/Gametype = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[connection signal="pressed" from="Control/Control2/VBoxContainer/STYLE1" to="." method="_on_STYLE1_pressed"]
+[connection signal="pressed" from="Control/Control2/VBoxContainer/STYLE2" to="." method="_on_STYLE2_pressed"]
+[connection signal="pressed" from="Control/Control2/VBoxContainer/STYLE3" to="." method="_on_STYLE3_pressed"]
+[connection signal="pressed" from="Control/Control2/VBoxContainer/STYLE4" to="." method="_on_STYLE4_pressed"]
+[connection signal="pressed" from="Control/Control2/BACK" to="." method="_on_BACK_pressed"]

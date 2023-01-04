@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/BOWLING_PIN.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Script/BOWLING_PIN.gd" type="Script" id=2]
+
+[node name="style3" type="Spatial"]
+
+[node name="BOWLING_PIN" type="Spatial" parent="." groups=[
+"Pins",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15576, 0, -0.805424 )
+script = ExtResource( 2 )
+
+[node name="BOWLING_PIN2" type="Spatial" parent="." groups=[
+"Pins",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77956, 0, -0.805424 )
+script = ExtResource( 2 )
+
+[node name="BOWLING_PIN3" type="Spatial" parent="." groups=[
+"Pins",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.648069, 0, -0.805424 )
+script = ExtResource( 2 )
+
+[node name="BOWLING_PIN4" type="Spatial" parent="." groups=[
+"Pins",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33831, 0, -0.805424 )
+script = ExtResource( 2 )
+
+[node name="BOWLING_PIN5" type="Spatial" parent="." groups=[
+"Pins",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47227, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="BOWLING_PIN6" type="Spatial" parent="." groups=[
+"Pins",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="BOWLING_PIN7" type="Spatial" parent="." groups=[
+"Pins",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39434, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="BOWLING_PIN8" type="Spatial" parent="." groups=[
+"Pins",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62356, 0, 0.822746 )
+script = ExtResource( 2 )
+
+[node name="BOWLING_PIN9" type="Spatial" parent="." groups=[
+"Pins",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.640869, 0, 0.822746 )
+script = ExtResource( 2 )
+
+[node name="BOWLING_PIN10" type="Spatial" parent="." groups=[
+"Pins",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0259705, 0, 1.61951 )
+script = ExtResource( 2 )
